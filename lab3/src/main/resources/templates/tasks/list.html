@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center my-3">
+    <h2>Task Manager</h2>
+        <div>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+        Add New Task
+    </button>
+        <a href = "/"> <button type="button" class="btn">Home</button></a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Deadline Date</th>
+            <th>Completed</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.name}"></td>
+            <td th:text="${task.deadlineDate}"></td>
+            <td th:text="${task.completed} ? 'Yes' : 'No'"></td>
+            <td>
+                <a th:href="@{'/tasks/details/' + ${task.id}}" class="btn btn-info btn-sm">Details</a>
+<!--                <a th:href="@{'/tasks/edit/' + ${task.id}}" class="btn btn-warning btn-sm">Edit</a>-->
+<!--                <a th:href="@{'/tasks/delete/' + ${task.id}}" class="btn btn-danger btn-sm">Delete</a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{/tasks/add}" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Task Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Task Description</label>
+                        <textarea class="form-control" name="description" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Deadline Date</label>
+                        <input type="date" class="form-control" name="deadlineDate" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Add New Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

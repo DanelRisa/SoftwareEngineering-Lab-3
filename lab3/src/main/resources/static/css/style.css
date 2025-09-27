@@ -1,0 +1,48 @@
+.bg-pink-100 {
+    background-color: #FFD8E1;
+}
+.bg-pink-300 {
+    background-color: #D4B5BC;
+}
+.bg-pink-700 {
+    background-color: #6F5E62;
+}
+.button-pink-1000{
+    background-color: #d63384;
+}
+body {
+    background-color: #f8f9fa;
+    font-family: Roboto, sans-serif;
+}
+
+.container, .card {
+    background-color: #FFD8E1;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    background-color: #d63384;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #D4B5BC;
+    color: #ffffff;
+}
+.text-danger {
+    color: red !important;
+}
+
+tr.table-danger td {
+    color: red !important;
+}

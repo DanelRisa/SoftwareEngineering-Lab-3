@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Edit Task</h2>
+
+    <form th:action="@{/tasks/update}" method="post">
+        <input type="hidden" name="id" th:value="${task.id}">
+
+        <div class="mb-3">
+            <label class="form-label">Task Name</label>
+            <input type="text" class="form-control" name="name" th:value="${task.name}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Task Description</label>
+            <textarea class="form-control" name="description" required
+                      th:text="${task.description}"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Deadline Date</label>
+            <input type="date" class="form-control" name="deadlineDate" th:value="${task.deadlineDate}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Completed</label>
+            <select class="form-control" name="completed">
+                <option th:value="true" th:selected="${task.completed}">Yes</option>
+                <option th:value="false" th:selected="${!task.completed}">No</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-secondary">Save Changes</button>
+        <a href="/tasks" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
